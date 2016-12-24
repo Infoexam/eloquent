@@ -26,8 +26,8 @@
     "phpunit/phpunit": "^5.7"
   },
   "repositories": [
-    {"type": "vcs", "url": "https://github.com/Infoexam/password.git"},
-    {"type": "vcs", "url": "https://github.com/Infoexam/media.git"}
+    {"type": "vcs", "url": "https://github.com/Infoexam/media.git"},
+    {"type": "vcs", "url": "https://github.com/Infoexam/password.git"}
   ],
   "autoload": {
     "psr-4": {
