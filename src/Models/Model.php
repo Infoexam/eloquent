@@ -36,4 +36,40 @@ abstract class Model extends Eloquent
     {
         return $this->sensitivities;
     }
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function (self $model) {
+            $attributes = $model->getAttributes();
+
+            // Transform empty string to null.
+            foreach ($attributes as $key => $value) {
+                if (is_string($value) && empty($value)) {
+                    $model->setAttribute($key, null);
+                }
+            }
+
+            // Replace sensitive characters to '-'.
+            $search = ['\\', '/', '#', '　'];
+
+            foreach ($model->getSensitivities() as $key) {
+                if (! isset($attributes[$key])) {
+                    continue;
+                }
+
+                $value = str_replace($search, '-', $model->getAttribute($key));
+
+                $value = preg_replace('/\s+/', '-', $value);
+
+                $model->setAttribute($key, $value);
+            }
+        });
+    }
 }

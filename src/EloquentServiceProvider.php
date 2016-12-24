@@ -38,8 +38,6 @@ class EloquentServiceProvider extends ServiceProvider
             Models\Config::class,
         ]);
 
-        Models\Model::observe(Observers\ModelObserver::class);
-
         Models\Receipt::observe(Observers\ReceiptObserver::class);
 
         Models\Exam::observe(Observers\ExamObserver::class);

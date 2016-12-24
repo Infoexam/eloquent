@@ -54,6 +54,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the department that belongs to the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @codeCoverageIgnore
      */
     public function department()
     {
@@ -64,6 +66,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the grade that belongs to the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @codeCoverageIgnore
      */
     public function grade()
     {
@@ -74,6 +78,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the certificates for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @codeCoverageIgnore
      */
     public function certificates()
     {
@@ -84,6 +90,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the receipts for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @codeCoverageIgnore
      */
     public function receipts()
     {
@@ -94,6 +102,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the applies for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @codeCoverageIgnore
      */
     public function applies()
     {

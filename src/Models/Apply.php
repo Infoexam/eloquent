@@ -22,6 +22,8 @@ class Apply extends Model
      * Get the user that belongs to the apply.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @codeCoverageIgnore
      */
     public function user()
     {
@@ -32,6 +34,8 @@ class Apply extends Model
      * Get the listing that belongs to the apply.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @codeCoverageIgnore
      */
     public function listing()
     {
@@ -42,6 +46,8 @@ class Apply extends Model
      * Get the result associated with the apply.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     *
+     * @codeCoverageIgnore
      */
     public function result()
     {

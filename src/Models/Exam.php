@@ -36,6 +36,8 @@ class Exam extends Model implements HasMediaConversions
      * Get the category that belongs to the exam.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @codeCoverageIgnore
      */
     public function category()
     {
