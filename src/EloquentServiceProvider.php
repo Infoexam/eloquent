@@ -18,9 +18,6 @@ class EloquentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->register(MediaServiceProvider::class);
-        $this->app->register(PasswordServiceProvider::class);
-
         Relation::morphMap([
             Models\User::class,
             Models\Certificate::class,
@@ -53,6 +50,7 @@ class EloquentServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->register(MediaServiceProvider::class);
+        $this->app->register(PasswordServiceProvider::class);
     }
 }
