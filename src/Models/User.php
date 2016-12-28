@@ -17,7 +17,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = ['password'];
 
     /**
      * The attributes that should be mutated to dates.
