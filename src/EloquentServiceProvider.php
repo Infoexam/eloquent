@@ -4,8 +4,6 @@ namespace Infoexam\Eloquent;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
-use Infoexam\Eloquent\Models;
-use Infoexam\Eloquent\Observers;
 use Infoexam\Media\MediaServiceProvider;
 use Infoexam\Password\PasswordServiceProvider;
 

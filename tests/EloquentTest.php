@@ -116,7 +116,7 @@ class EloquentTest extends Orchestra\Testbench\TestCase
         $questions = $exam->questions()->saveMany([new Question, new Question]);
 
         foreach ($questions as $question) {
-            /** @var Question $question */
+            /* @var Question $question */
             $question->options()->saveMany([new Option, new Option]);
         }
 
