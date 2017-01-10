@@ -19,6 +19,15 @@ class Receipt extends Model
     protected $dates = ['created_at'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'used' => 'boolean',
+    ];
+
+    /**
      * Get the category that belongs to the receipt.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
