@@ -45,6 +45,14 @@ class Exam extends Model implements HasMediaConversions
     }
 
     /**
+     * Get all of the exam's attachments.
+     */
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachmentable');
+    }
+
+    /**
      * Get the questions for the exam.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
