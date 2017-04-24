@@ -2,6 +2,8 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Hashids\Hashids;
+
 class News extends Model
 {
     /**
@@ -19,4 +21,25 @@ class News extends Model
      * @var array
      */
     protected $sensitivities = ['heading'];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['url'];
+
+    /**
+     * Get the user's first name.
+     *
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        $hashids = new Hashids('maOn20BAcIkOF8Uiw8vABepn6gqS6bTN', 6);
+
+        $encode = $hashids->encode($this->getKey());
+
+        return sprintf('%s-%s', $this->getAttribute('heading'), $encode);
+    }
 }

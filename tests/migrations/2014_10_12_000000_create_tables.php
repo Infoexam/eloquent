@@ -74,6 +74,15 @@ class CreateTables extends Migration
             $table->unsignedTinyInteger('duration');
             $table->timestamps();
         });
+
+        Schema::create('news', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('heading', 190);
+            $table->string('link', 190)->nullable();
+            $table->string('content', 1000);
+            $table->boolean('is_announcement')->default(false);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -92,5 +101,6 @@ class CreateTables extends Migration
         Schema::dropIfExists('receipts');
         Schema::dropIfExists('users');
         Schema::dropIfExists('categories');
+        Schema::dropIfExists('news');
     }
 }

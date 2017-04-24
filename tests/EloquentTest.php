@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Infoexam\Eloquent\Models\Category;
 use Infoexam\Eloquent\Models\Exam;
 use Infoexam\Eloquent\Models\Listing;
+use Infoexam\Eloquent\Models\News;
 use Infoexam\Eloquent\Models\Option;
 use Infoexam\Eloquent\Models\Paper;
 use Infoexam\Eloquent\Models\Question;
@@ -169,6 +170,13 @@ class EloquentTest extends Orchestra\Testbench\TestCase
         ]);
 
         $this->assertSame('2016-12-31 01:30:00', $listing->getAttribute('ended_at')->toDateTimeString());
+    }
+
+    public function test_news_url_attribute()
+    {
+        $news = News::create(['heading' => 'apple', 'content' => 'text']);
+
+        $this->assertArrayHasKey('url', $news->toArray());
     }
 
     public function test_get_categories()
