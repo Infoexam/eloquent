@@ -51,7 +51,7 @@ abstract class Model extends Eloquent
 
             // Transform empty string to null.
             foreach ($attributes as $key => $value) {
-                if (is_string($value) && empty($value)) {
+                if (is_string($value) && ! $model->hasCast($key, 'boolean') && empty($value)) {
                     $model->setAttribute($key, null);
                 }
             }
