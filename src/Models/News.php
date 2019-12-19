@@ -34,7 +34,7 @@ class News extends Model
      *
      * @return string
      */
-    public function getUrlAttribute()
+    public function getUrlAttribute(): string
     {
         $hashids = new Hashids('maOn20BAcIkOF8Uiw8vABepn6gqS6bTN', 6);
 

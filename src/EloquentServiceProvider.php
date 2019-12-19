@@ -14,7 +14,7 @@ class EloquentServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Relation::morphMap([
             Models\User::class,
@@ -46,7 +46,7 @@ class EloquentServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->register(MediaServiceProvider::class);
         $this->app->register(PasswordServiceProvider::class);

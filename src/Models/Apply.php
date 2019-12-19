@@ -2,6 +2,9 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class Apply extends Model
 {
     /**
@@ -21,11 +24,11 @@ class Apply extends Model
     /**
      * Get the user that belongs to the apply.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      *
      * @codeCoverageIgnore
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -33,11 +36,11 @@ class Apply extends Model
     /**
      * Get the listing that belongs to the apply.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      *
      * @codeCoverageIgnore
      */
-    public function listing()
+    public function listing(): BelongsTo
     {
         return $this->belongsTo(Listing::class);
     }
@@ -45,11 +48,11 @@ class Apply extends Model
     /**
      * Get the result associated with the apply.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      *
      * @codeCoverageIgnore
      */
-    public function result()
+    public function result(): HasOne
     {
         return $this->hasOne(Result::class);
     }

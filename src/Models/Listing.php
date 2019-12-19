@@ -3,6 +3,8 @@
 namespace Infoexam\Eloquent\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Listing extends Model
 {
@@ -68,9 +70,9 @@ class Listing extends Model
     /**
      * Get the apply type that belongs to the listing.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function applyType()
+    public function applyType(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'apply_type_id');
     }
@@ -78,9 +80,9 @@ class Listing extends Model
     /**
      * Get the subject that belongs to the listing.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function subject()
+    public function subject(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'subject_id');
     }
@@ -88,9 +90,9 @@ class Listing extends Model
     /**
      * Get the paper that owns the listing.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function paper()
+    public function paper(): BelongsTo
     {
         return $this->belongsTo(Paper::class);
     }
@@ -98,9 +100,9 @@ class Listing extends Model
     /**
      * Get the applies for the listing.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function applies()
+    public function applies(): HasMany
     {
         return $this->hasMany(Apply::class);
     }

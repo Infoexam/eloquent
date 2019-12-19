@@ -2,6 +2,8 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Certificate extends Model
 {
     /**
@@ -16,9 +18,9 @@ class Certificate extends Model
     /**
      * Get the category that belongs to the certificate.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

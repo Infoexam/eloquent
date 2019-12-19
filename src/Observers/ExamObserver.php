@@ -14,7 +14,7 @@ class ExamObserver
      *
      * @return void
      */
-    public function deleting(Exam $exam)
+    public function deleting(Exam $exam): void
     {
         // Delete the questions for the exam.
         $exam->load(['questions'])

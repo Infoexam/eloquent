@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
 use Infoexam\Eloquent\Models\Category;
 use Infoexam\Eloquent\Models\Exam;
@@ -11,31 +12,30 @@ use Infoexam\Eloquent\Models\Paper;
 use Infoexam\Eloquent\Models\Question;
 use Infoexam\Eloquent\Models\Receipt;
 use Infoexam\Eloquent\Models\User;
+use Orchestra\Testbench\TestCase;
 
-class EloquentTest extends Orchestra\Testbench\TestCase
+class EloquentTest extends TestCase
 {
     /**
      * Setup the test environment.
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $this->loadMigrationsFrom([
-            '--realpath' => realpath(__DIR__.'/migrations'),
-        ]);
+        $this->loadMigrationsFrom(__DIR__ . '/migrations');
     }
 
     /**
      * Get package providers.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      *
      * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             Infoexam\Eloquent\EloquentServiceProvider::class,
@@ -45,18 +45,13 @@ class EloquentTest extends Orchestra\Testbench\TestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param Application $app
      *
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('database.default', 'testing');
-        $app['config']->set('database.connections.testing', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => '',
-        ]);
     }
 
     public function test_string_to_null()

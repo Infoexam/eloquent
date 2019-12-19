@@ -2,6 +2,8 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Receipt extends Model
 {
     /**
@@ -30,9 +32,9 @@ class Receipt extends Model
     /**
      * Get the category that belongs to the receipt.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

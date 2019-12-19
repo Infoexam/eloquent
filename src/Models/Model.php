@@ -42,7 +42,7 @@ abstract class Model extends Eloquent
      *
      * @return void
      */
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 

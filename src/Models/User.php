@@ -5,6 +5,8 @@ namespace Infoexam\Eloquent\Models;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 
@@ -53,11 +55,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * Get the department that belongs to the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      *
      * @codeCoverageIgnore
      */
-    public function department()
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'department_id');
     }
@@ -65,11 +67,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * Get the grade that belongs to the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      *
      * @codeCoverageIgnore
      */
-    public function grade()
+    public function grade(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'grade_id');
     }
@@ -77,11 +79,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * Get the certificates for the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      *
      * @codeCoverageIgnore
      */
-    public function certificates()
+    public function certificates(): HasMany
     {
         return $this->hasMany(Certificate::class);
     }
@@ -89,11 +91,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * Get the receipts for the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      *
      * @codeCoverageIgnore
      */
-    public function receipts()
+    public function receipts(): HasMany
     {
         return $this->hasMany(Receipt::class);
     }
@@ -101,11 +103,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * Get the applies for the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      *
      * @codeCoverageIgnore
      */
-    public function applies()
+    public function applies(): HasMany
     {
         return $this->hasMany(Apply::class);
     }
@@ -117,7 +119,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function own($role)
+    public function own($role): bool
     {
         if (! $this->exists) {
             return false;

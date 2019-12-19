@@ -2,10 +2,12 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Infoexam\Media\Media;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 
-class Exam extends Model implements HasMediaConversions
+class Exam extends Model implements HasMedia
 {
     use Media;
 
@@ -35,11 +37,11 @@ class Exam extends Model implements HasMediaConversions
     /**
      * Get the category that belongs to the exam.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      *
      * @codeCoverageIgnore
      */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
@@ -47,9 +49,9 @@ class Exam extends Model implements HasMediaConversions
     /**
      * Get the questions for the exam.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function questions()
+    public function questions(): HasMany
     {
         return $this->hasMany(Question::class);
     }

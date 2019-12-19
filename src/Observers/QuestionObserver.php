@@ -14,7 +14,7 @@ class QuestionObserver
      *
      * @return void
      */
-    public function deleting(Question $question)
+    public function deleting(Question $question): void
     {
         $question->load(['questions', 'options']);
 

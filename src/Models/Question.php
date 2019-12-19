@@ -2,6 +2,10 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Question extends Model
 {
     /**
@@ -30,9 +34,9 @@ class Question extends Model
     /**
      * Get the difficulty that belongs to the question.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function difficulty()
+    public function difficulty(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'difficulty_id');
     }
@@ -40,9 +44,9 @@ class Question extends Model
     /**
      * Get the options for the question.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function options()
+    public function options(): HasMany
     {
         return $this->hasMany(Option::class);
     }
@@ -50,9 +54,9 @@ class Question extends Model
     /**
      * Get the questions for the question.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function questions()
+    public function questions(): HasMany
     {
         return $this->hasMany(self::class);
     }
@@ -60,9 +64,9 @@ class Question extends Model
     /**
      * Get the exam that owns the question.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function exam()
+    public function exam(): BelongsTo
     {
         return $this->belongsTo(Exam::class);
     }
@@ -70,9 +74,9 @@ class Question extends Model
     /**
      * The papers that belong to the question.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function papers()
+    public function papers(): BelongsToMany
     {
         return $this->belongsToMany(Paper::class);
     }

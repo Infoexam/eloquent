@@ -2,6 +2,8 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Illuminate\Database\Eloquent\Collection;
+
 class Category extends Model
 {
     /**
@@ -18,7 +20,7 @@ class Category extends Model
      * @param null|string $name
      * @param bool $getKey
      *
-     * @return \Illuminate\Database\Eloquent\Collection|mixed|null|string
+     * @return Collection|mixed|null|string
      */
     public static function getCategories($category = null, $name = null, $getKey = true)
     {
@@ -46,11 +48,11 @@ class Category extends Model
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Collection $collection
+     * @param Collection $collection
      * @param string $column
      * @param mixed $value
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
     protected static function filterBy($collection, $column, $value)
     {

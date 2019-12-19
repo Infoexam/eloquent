@@ -14,7 +14,7 @@ class ReceiptObserver
      *
      * @return void
      */
-    public function creating(Receipt $receipt)
+    public function creating(Receipt $receipt): void
     {
         $receipt->setAttribute('created_at', Carbon::now());
     }

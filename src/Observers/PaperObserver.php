@@ -13,7 +13,7 @@ class PaperObserver
      *
      * @return void
      */
-    public function deleting(Paper $paper)
+    public function deleting(Paper $paper): void
     {
         // Delete the questions for the paper.
         $paper->questions()->detach();

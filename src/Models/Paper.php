@@ -2,6 +2,9 @@
 
 namespace Infoexam\Eloquent\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Paper extends Model
 {
     /**
@@ -21,9 +24,9 @@ class Paper extends Model
     /**
      * The questions that belong to the paper.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function questions()
+    public function questions(): BelongsToMany
     {
         return $this->belongsToMany(Question::class);
     }
@@ -31,9 +34,9 @@ class Paper extends Model
     /**
      * Get the listings for the paper.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function listings()
+    public function listings(): HasMany
     {
         return $this->hasMany(Listing::class);
     }

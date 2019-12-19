@@ -13,7 +13,7 @@ class ListingObserver
      *
      * @return void
      */
-    public function saving(Listing $listing)
+    public function saving(Listing $listing): void
     {
         // Fill the code and ended_at attributes.
         $code = sprintf('%s%s', $listing->getAttribute('began_at')->format('YmdHi'), $listing->getAttribute('room'));
