@@ -1,3 +1,9 @@
 # Infoexam Eloquent
 
-[![StyleCI](https://styleci.io/repos/77275392/shield)](https://styleci.io/repos/77275392)
+[![Actions Status](https://github.com/infoexam/eloquent/workflows/PHPUnit/badge.svg)](https://github.com/infoexam/eloquent/actions)
+
+CCU Infoexam Eloquent Package
+
+## Version
+
+1.0.0
