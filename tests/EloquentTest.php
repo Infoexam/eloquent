@@ -42,21 +42,9 @@ class EloquentTest extends TestCase
         ];
     }
 
-    /**
-     * Define environment setup.
-     *
-     * @param Application $app
-     *
-     * @return void
-     */
-    protected function getEnvironmentSetUp($app): void
+    public function test_empty_string_to_null()
     {
-        $app['config']->set('database.default', 'testing');
-    }
-
-    public function test_string_to_null()
-    {
-        $user = User::create(['name' => 'apple'])->fresh();
+        $user = User::query()->create(['name' => 'apple'])->fresh();
 
         $this->assertSame('apple', $user->getAttribute('name'));
 
@@ -67,18 +55,25 @@ class EloquentTest extends TestCase
 
     public function test_sensitivities()
     {
-        $exam = Exam::create(['name' => 'th#is is     an apple'])->fresh();
+        $exam = Exam::query()->create(['name' => 'th#is is     an apple'])->fresh();
 
         $this->assertSame('th-is-is-an-apple', $exam->getAttribute('name'));
+
+        $exam->update(['name' => ' apple   is good  ']);
+
+        $this->assertSame('apple-is-good', $exam->getAttribute('name'));
     }
 
     public function test_user_own()
     {
-        $user = User::create()->fresh();
+        $user = User::query()->create()->fresh();
 
         $this->assertTrue($user->own('testing'));
+
         $this->assertTrue($user->own(['apple', 'banana', 'testing']));
+
         $this->assertFalse($user->own('banana'));
+
         $this->assertFalse($user->own(['apple', 'banana', 'car']));
 
         $user->delete();
@@ -88,17 +83,18 @@ class EloquentTest extends TestCase
 
     public function test_user_password()
     {
-        $user = User::create(['password' => 'apple'])->fresh();
+        $user = User::query()->create(['password' => 'apple'])->fresh();
 
         $attributes = $user->getAttributes();
 
         $this->assertNotSame('apple', $attributes['password']);
+
         $this->assertSame('apple', $user->getAttribute('password'));
     }
 
     public function test_receipt_created_at()
     {
-        $user = User::create();
+        $user = User::query()->create();
 
         $receipt = $user->receipts()->save(new Receipt);
 
@@ -107,7 +103,7 @@ class EloquentTest extends TestCase
 
     public function test_exam_and_question_deleting()
     {
-        $exam = Exam::create();
+        $exam = Exam::query()->create();
 
         $questions = $exam->questions()->saveMany([new Question, new Question]);
 
@@ -129,11 +125,11 @@ class EloquentTest extends TestCase
 
     public function test_paper_deleting()
     {
-        $questions = Exam::create()
+        $questions = Exam::query()->create()
             ->questions()
             ->saveMany([new Question, new Question]);
 
-        $paper = Paper::create();
+        $paper = Paper::query()->create();
 
         $paper->questions()->saveMany($questions);
 
@@ -148,7 +144,7 @@ class EloquentTest extends TestCase
     {
         $now = Carbon::parse('2016-12-31 00:00:00');
 
-        $listing = Listing::create([
+        $listing = Listing::query()->create([
             'began_at' => $now,
             'duration' => 50,
             'room' => 123,
@@ -157,7 +153,7 @@ class EloquentTest extends TestCase
         $this->assertSame('201612310000123', $listing->getAttribute('code'));
         $this->assertSame('2016-12-31 00:50:00', $listing->getAttribute('ended_at')->toDateTimeString());
 
-        $listing = Listing::create([
+        $listing = Listing::query()->create([
             'began_at' => $now,
             'started_at' => $now->copy()->addHour(),
             'duration' => 30,
@@ -169,16 +165,16 @@ class EloquentTest extends TestCase
 
     public function test_news_url_attribute()
     {
-        $news = News::create(['heading' => 'apple', 'content' => 'text']);
+        $news = News::query()->create(['heading' => 'apple', 'content' => 'text']);
 
         $this->assertArrayHasKey('url', $news->toArray());
     }
 
     public function test_get_categories()
     {
-        $category = Category::create(['category' => 'fruit', 'name' => 'apple'])->fresh();
-        Category::create(['category' => 'fruit', 'name' => 'banana']);
-        Category::create(['category' => 'company', 'name' => 'google']);
+        $category = Category::query()->create(['category' => 'fruit', 'name' => 'apple'])->fresh();
+        Category::query()->create(['category' => 'fruit', 'name' => 'banana']);
+        Category::query()->create(['category' => 'company', 'name' => 'google']);
 
         $this->assertCount(3, Category::getCategories());
         $this->assertCount(2, Category::getCategories('fruit'));
