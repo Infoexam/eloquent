@@ -64,7 +64,7 @@ abstract class Model extends Eloquent
                     continue;
                 }
 
-                $value = str_replace($search, '-', $model->getAttribute($key));
+                $value = str_replace($search, '-', trim($model->getAttribute($key)));
 
                 $value = preg_replace('/\s+/', '-', $value);
 
