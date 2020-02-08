@@ -3,7 +3,6 @@
 namespace Infoexam\Eloquent\Observers;
 
 use Infoexam\Eloquent\Models\Exam;
-use Infoexam\Eloquent\Models\Question;
 
 class ExamObserver
 {
@@ -17,10 +16,9 @@ class ExamObserver
     public function deleting(Exam $exam): void
     {
         // Delete the questions for the exam.
-        $exam->load(['questions'])
-            ->getRelation('questions')
-            ->each(function (Question $question) {
-                $question->delete();
-            });
+        $exam->loadMissing('questions')
+            ->questions
+            ->each
+            ->delete();
     }
 }

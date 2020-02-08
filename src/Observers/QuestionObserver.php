@@ -2,7 +2,6 @@
 
 namespace Infoexam\Eloquent\Observers;
 
-use Infoexam\Eloquent\Models\Option;
 use Infoexam\Eloquent\Models\Question;
 
 class QuestionObserver
@@ -16,18 +15,12 @@ class QuestionObserver
      */
     public function deleting(Question $question): void
     {
-        $question->load(['questions', 'options']);
+        $question->loadMissing(['questions', 'options']);
 
         // Delete the sub questions for the question.
-        $question->getRelation('questions')
-            ->each(function (Question $question) {
-                $question->delete();
-            });
+        $question->questions->each->delete();
 
         // Delete the options for the question.
-        $question->getRelation('options')
-            ->each(function (Option $option) {
-                $option->delete();
-            });
+        $question->options->each->delete();
     }
 }
