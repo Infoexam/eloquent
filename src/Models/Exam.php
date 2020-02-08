@@ -38,8 +38,6 @@ class Exam extends Model implements HasMedia
      * Get the category that belongs to the exam.
      *
      * @return BelongsTo
-     *
-     * @codeCoverageIgnore
      */
     public function category(): BelongsTo
     {

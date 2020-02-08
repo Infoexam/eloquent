@@ -25,8 +25,6 @@ class Apply extends Model
      * Get the user that belongs to the apply.
      *
      * @return BelongsTo
-     *
-     * @codeCoverageIgnore
      */
     public function user(): BelongsTo
     {
@@ -37,8 +35,6 @@ class Apply extends Model
      * Get the listing that belongs to the apply.
      *
      * @return BelongsTo
-     *
-     * @codeCoverageIgnore
      */
     public function listing(): BelongsTo
     {
@@ -49,8 +45,6 @@ class Apply extends Model
      * Get the result associated with the apply.
      *
      * @return HasOne
-     *
-     * @codeCoverageIgnore
      */
     public function result(): HasOne
     {

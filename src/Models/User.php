@@ -56,8 +56,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the department that belongs to the user.
      *
      * @return BelongsTo
-     *
-     * @codeCoverageIgnore
      */
     public function department(): BelongsTo
     {
@@ -68,8 +66,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the grade that belongs to the user.
      *
      * @return BelongsTo
-     *
-     * @codeCoverageIgnore
      */
     public function grade(): BelongsTo
     {
@@ -80,8 +76,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the certificates for the user.
      *
      * @return HasMany
-     *
-     * @codeCoverageIgnore
      */
     public function certificates(): HasMany
     {
@@ -92,8 +86,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the receipts for the user.
      *
      * @return HasMany
-     *
-     * @codeCoverageIgnore
      */
     public function receipts(): HasMany
     {
@@ -104,8 +96,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the applies for the user.
      *
      * @return HasMany
-     *
-     * @codeCoverageIgnore
      */
     public function applies(): HasMany
     {
