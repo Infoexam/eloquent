@@ -54,7 +54,7 @@ class Category extends Model
      *
      * @return Collection
      */
-    protected static function filterBy($collection, $column, $value)
+    protected static function filterBy($collection, $column, $value): Collection
     {
         return $collection->filter(function (self $val) use ($column, $value) {
             return $value === $val->getAttribute($column);
